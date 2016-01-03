@@ -35,10 +35,7 @@ public class Main {
 			for(int k = 0; k < N; k++) {
 				result = result + Math.abs(intMen.get(k) - intWom.get(k));
 			}
-			
-			intMen.clear();
-			intWom.clear();
-			
+
 			System.out.println(result);
 		}
 	}
