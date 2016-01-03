@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+		int splitArr[];
+
+		int T;
+		int N, M;
+		int S;
+
+		T = Integer.parseInt(br.readLine());
+
+		for(int i = 0; i < T; i++) {
+			splitArr = inputInt();
+			
+			N = splitArr[0];
+			M = splitArr[1];
+			
+			int solNumArr[];
+			boolean solArr[] = new boolean[M];
+			
+			for(int j = 0; j < N; j++) {
+				solNumArr = inputInt();
+				
+				if(solNumArr[0] < 0 || solNumArr[0] == M) {
+					System.out.println("NO");
+					
+					return;
+				}
+				
+				for(int l = 1; l < solNumArr[0]; l++) {
+					solArr[solNumArr[l]] = true;
+				}
+			}
+			
+			for(int m = 0; m < M; m++) {
+				if(solArr[m] == false) {
+					System.out.println("NO");
+				}
+			}
+			
+			System.out.println("YES");
+		}
+	}
+	
+	public static int[] inputInt() throws IOException {
+		BufferedReader brin = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer token = null;
+		int inputNum[] = new int[500];
+		
+		token = new StringTokenizer(brin.readLine());
+
+		int k = 0;
+		while(token.hasMoreTokens()) {
+			inputNum[k] = Integer.parseInt(token.nextToken());
+			
+			k++;
+		}
+
+		return inputNum;
+	}
+}
