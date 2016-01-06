@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.StringTokenizer;
 
 public class Main {
 
@@ -24,8 +23,17 @@ public class Main {
 
 			N = Integer.parseInt(br.readLine());
 
-			intMen = inputInteger(intMen, N);
-			intWom = inputInteger(intWom, N);
+			String split[] = br.readLine().split(" ");
+
+			for(int k = 0; k < N; k++) {
+				intMen.add(Integer.parseInt(split[k]));
+			}
+
+			split = br.readLine().split(" ");
+
+			for(int z = 0; z < N; z++) {
+				intWom.add(Integer.parseInt(split[z]));
+			}
 
 			Collections.sort(intMen);
 			Collections.sort(intWom);
@@ -33,23 +41,11 @@ public class Main {
 			for(int k = 0; k < N; k++) {
 				result = result + Math.abs(intMen.get(k) - intWom.get(k));
 			}
-			
+
 			intMen.clear();
 			intWom.clear();
-			
+
 			System.out.println(result);
 		}
-	}
-
-	public static ArrayList<Integer> inputInteger(ArrayList<Integer> inputArr, int memNum) throws IOException {
-		BufferedReader bri = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer token = null;
-		token = new StringTokenizer(bri.readLine());
-
-		while(token.hasMoreTokens()) {
-			inputArr.add(Integer.parseInt(token.nextToken()));
-		}
-
-		return inputArr;
 	}
 }
